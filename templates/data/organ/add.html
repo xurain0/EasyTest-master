@@ -1,0 +1,181 @@
+{% extends "../../base.html" %}
+
+{% block crumbs %}
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/yqjr/index">主页</a>
+            </li>
+            <li class="active">
+                <a class="this">测试数据管理</a>
+            </li>
+            <li class="active">
+                <a class="this-page">一般单位</a>
+            </li>
+            <li class="active">
+                <a class="">添加一般单位数据</a>
+            </li>
+        </ol>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加一般单位数据</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" action="/base/organ_add/">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">测试数据名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="testdataname" name="testdataname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">序列号</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="seqno" name="seqno" placeholder="请输入最大的seqno" style="width:250px" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">业务流水号</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="processid" name="processid" placeholder="流水号格式：<发起方编码>-<发起方式>-<业务日期>-<8位流水号>"
+                                   class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">流程功能</label>
+                        <div class="col-sm-8">
+                            <select type="text" id="processtype" name="processtype" required="required"
+                                    class="form-control" style="width:250px">
+                                <option value='1' selected="selected">申请交易编码</option>
+                                <option value='2'>撤销交易编码</option>
+                                <option value='3'>修改身份信息</option>
+                                <option value='4'>修改一般信息</option>
+                                <option value='5'>交易所开户报备</option>
+                                <option value='6'>交易所销户报备</option>
+                                <option value='7'>补报规范资料</option>
+                                <option value='8'>账户休眠</option>
+                                <option value='9'>激活休眠账户</option>
+                                <option value='10'>解除开仓限制</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">开户客户地域</label>
+                        <div class="col-sm-8">
+                            <select type="text" id="clientregion" name="clientregion" required="required"
+                                    class="form-control" style="width:250px" onchange="setSel(this);" >
+                                <option value='1' selected="selected">境内客户</option>
+                                <option value='2'>港澳台客户</option>
+                                <option value='3'>境外客户</option>
+                                <option value='4'>永久居留的境外客户</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">客户开户模式</label>
+                        <div class="col-sm-8">
+                            <select type="text" id="foreignclientmode" name="foreignclientmode" required="required"
+                                    class="form-control" style="width:250px">
+                                <option value='0' selected="selected">境内投资者模式</option>
+                                <option value='1'>境内期货公司直接代理境外投资者模式</option>
+                                <option value='2'>境外特殊经纪参与者模式</option>
+                                <option value='3'>境外中介机构中间介绍模式</option>
+                                <option value='4'>境外中介机构委托代理</option>
+                                <option value='5'>境外特殊非经纪参与者模式</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">期货市场客户编码</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="futuresid" name="futuresid" value=""
+                                   class="form-control" style="width:250px">
+                            只有修改客户资料或者加开交易所帐户时，输入客户编码
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">交易所编号</label>
+                        <div class="col-sm-8">
+                            <select class="form-control"  type="text" id="exchangeid" name="exchangeid"
+                                    required="required" style="width:250px">
+                                <option value='S' selected="selected">上海期货交易所</option>
+                                <option value='N'>上海国际能源交易中心</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">期货公司编码</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="companyid" name="companyid" required="required"
+                                   class="form-control" style="width:250px">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">交易类型</label>
+                        <div class="col-sm-8">
+                            <select type="text" id="exclientidtype" name="exclientidtype" required="required"
+                                    class="form-control" style="width:250px">
+                                <option value='1'>套保</option>
+                                <option value='2'>套利</option>
+                                <option value='3' selected="selected">投机</option>
+                                <option value='4'>做市商</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">一般单位名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="clientname" name="clientname" value=""
+                                   class="form-control" style="width:250px" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">营业执照号</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="licenseno" name="licenseno"
+                                   class="form-control" style="width:250px" required="required">
+                            境外客户填写空
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">银行账号</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="accountno" name="accountno"
+                                   class="form-control" style="width:250px" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">开户行网点</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="branchname" name="branchname" value=""
+                                   class="form-control" style="width:250px" required="required">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-6">
+                            <button type="submit" id="sumbit" class="btn btn-primary">保存</button>
+                            <button type="button" class="btn btn-primary" onclick="javascript:history.back(-1);">返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascript %}
+<script>
+
+</script>
+{% endblock %}

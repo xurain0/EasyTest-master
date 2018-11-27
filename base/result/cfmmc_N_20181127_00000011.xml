@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="gbk"?>
+	<package_list from="cfmmc" to="N" version="1.3">
+		<package seqno="1" seqserial="1">
+			<process businesstype="1" cfmmcreturncode="None" exreturncode="" exreturnmsg="" processdate="2018-11-27" processid="8003-A-20181127-00000001" processstatus="7" processtime="15:11:56" processtype="1">
+				<specialorgan_info addr_address="" addr_city="" addr_country="" addr_province="" addr_zipcode="" businessperiod="" classify="01" clientname="国金期货" clientname_eng="clientnameeng" clienttype="4" companyid="8003" exchangeid="N" exclientid="" exclientidtype="3" excompanyid="8003" futuresid="" legal_id="370883198603280916" legal_idtype="1" legal_phone_areacode="" legal_phone_countrycode="" legal_phone_number="" legalperson="王一" licenseno="201811271516" nocid="201811271516" nocid_extracode="" opendate="2018-11-27" order_id="" order_idtype="" order_name="" organtype="01" phone_areacode="" phone_countrycode="" phone_number="" registry_addr_address="上海浦东浦电路500号" registry_addr_city="上海" registry_addr_country="中国" registry_addr_province="上海" registry_currency="CNY" registrycapital="100000000.00" taxno="">
+					<bankacc_list>
+						<bankacc accountname="国金期货" accountno="3301040160000852007" bankid="01" branchname="交通银行期货大厦支行"/>
+					</bankacc_list>
+					<businessrange_list industryid="100"/>
+					<share_holder_list>
+						<share_holder product_code="product_code" product_mgr_name="product_mgr_name" product_scale="product_scale" share_holder_id="share_holder_id" share_holder_idtype="share_holder_idtype" share_holder_name="share_holder_name_xu_1" share_holder_type="1" share_holding_amount="share_holding_amount" share_holding_ratio="share_holding_ratio"/>
+					</share_holder_list>
+				</specialorgan_info>
+			</process>
+		</package>
+	</package_list>

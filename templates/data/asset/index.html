@@ -1,0 +1,71 @@
+{% extends "../../base.html" %}
+
+{% block crumbs %}
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/yqjr/index">主页</a>
+                </li>
+                <li class="active">
+                    <a class="this">测试数据管理</a>
+                </li>
+                <li class="active">
+                    <a class="this-page">资管客户</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <a href="/base/asset_add/" class="btn btn-primary">添加资管客户测试数据</a>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>测试数据名称</th>
+                        <th>业务流水号</th>
+                        <th>交易所</th>
+                        <th>会员号</th>
+                        <th>资管单位名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for al in asset_list %}
+                    <tr>
+                        <td>{{ al.processingno }}</td>
+                        <td>{{ al.testdataname }}</td>
+                        <td>{{ al.processid }}</td>
+                        <td>{% ifequal al.exchangeid 's' %}
+                            上期所
+                            {% else %}
+                            能源所
+                            {% endifequal %}
+                        </td>
+                        <td>{{ al.companyid }}</td>
+                        <td>{{ al.clientname }}</td>
+                        <td>
+                            <a href="/base/asset_detail?processingno={{ al.processingno }}" class="layui-btn layui-btn-xs"
+                                        lay-event="edit">详情</a>
+                            <a href="/base/asset_delete?processingno={{ al.processingno }}" class="layui-btn layui-btn-danger layui-btn-xs"
+                               lay-event="del">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "../../base.html" %}
+
+{% block crumbs %}
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/yqjr/index">主页</a>
+                </li>
+                <li class="active">
+                    <a class="this">测试数据管理</a>
+                </li>
+                <li class="active">
+                    <a class="this-page">一般单位</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <a href="/base/organ_add/" class="btn btn-primary">添加一般单位测试数据</a>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>测试数据名称</th>
+                        <th>业务流水号</th>
+                        <th>交易所</th>
+                        <th>会员号</th>
+                        <th>一般单位名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ol in organ_list %}
+                    <tr>
+                        <td>{{ ol.processingno }}</td>
+                        <td>{{ ol.testdataname }}</td>
+                        <td>{{ ol.processid }}</td>
+                        <td>{% ifequal ol.exchangeid 's' %}
+                            上期所
+                            {% else %}
+                            能源所
+                            {% endifequal %}
+                        </td>
+                        <td>{{ ol.companyid }}</td>
+                        <td>{{ ol.clientname }}</td>
+                        <td>
+                            <a href="/base/organ_detail?processingno={{ ol.processingno }}" class="layui-btn layui-btn-xs"
+                                        lay-event="edit">详情</a>
+                            <a href="/base/organ_delete?processingno={{ ol.processingno }}" class="layui-btn layui-btn-danger layui-btn-xs"
+                               lay-event="del">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

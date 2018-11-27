@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="gbk"?>
+	<package_list from="cfmmc" to="S" version="1.3">
+		<package seqno="1" seqserial="1">
+			<process businesstype="1" cfmmcreturncode="None" exreturncode="" exreturnmsg="" processdate="2018-11-21" processid="8005-A-20181119-00000001" processstatus="7" processtime="14:25:58" processtype="1">
+				<person_info addr_address="" addr_city="" addr_country="" addr_province="" addr_zipcode="" birthday="" classify="01" clientname="王老大" clientregion="1" clienttype="2" companyid="8005" compclientid="" exchangeid="S" exclientid="" exclientidtype="3" excompanyid="8005" foreignclientmode="0" futuresid="" gender="" id_original="" id_transformed="" idtype="50" nationality="" opendate="2018-11-21" order_id="" order_idtype="" order_name="" order_phone_countrycode="" phone_areacode="" phone_countrycode="" phone_number="">
+					<bankacc_list>
+						<bankacc accountname="01" accountno="100" bankid="" branchname="201811211355"/>
+					</bankacc_list>
+				</person_info>
+			</process>
+		</package>
+	</package_list>

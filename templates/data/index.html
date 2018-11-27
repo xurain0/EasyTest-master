@@ -1,0 +1,65 @@
+{% extends "../../base.html" %}
+
+{% block crumbs %}
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/yqjr/index">主1页</a>
+            </li>
+            <li class="active">
+                <a class="this">测试数据1管理</a>
+            </li>
+            <li class="active">
+                <a class="this-page">111</a>
+            </li>
+        </ol>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <a href="/base/data_add/" class="btn btn-primary">添加测试数据</a>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>测试数据名称</th>
+                        <th>发送方</th>
+                        <th>接收方</th>
+                        <th>会员号</th>
+                        <th>客户名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for if in if_list %}
+                    <tr>
+                        <td>{{ pl.processingno }}</td>
+                        <td>{{ pl.testdataname }}</td>
+                        <td>{{ pl.sender }}</td>
+                        <td>{{ pl.receiver }}</td>
+                        <td>{{ pl.companyid }}</td>
+                        <td>{{ pl.clientname }}</td>
+                        <td>
+                            <a href="" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                            <a href="" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

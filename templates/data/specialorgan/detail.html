@@ -1,0 +1,200 @@
+{% extends "../../base.html" %}
+
+{% block crumbs %}
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/yqjr/index">主页</a>
+            </li>
+            <li class="active">
+                <a class="this">测试数据管理</a>
+            </li>
+            <li class="active">
+                <a class="this-page" href="/base/person/">特殊单位</a>
+            </li>
+            <li class="active">
+                <a class="">详情</a>
+            </li>
+        </ol>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">详情</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="get" action="/base/specialorgan_detail/">
+                <input name="processingno" value ={{specialorgan_detail.processingno }} hidden>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">测试数据名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="testdataname" value={{ specialorgan_detail.testdataname }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">序列号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="seqno" value={{ specialorgan_detail.seqno }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">业务流水号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="processid" value={{ specialorgan_detail.processid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">流程功能</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="processtype"
+                                    {% ifequal specialorgan_detail.processtype '1' %}
+                                        value="申请交易编码"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '2' %}
+                                        value="撤销交易编码"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '3' %}
+                                        value="修改身份信息"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '4' %}
+                                        value="修改一般信息"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '5' %}
+                                        value="交易所开户报备"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '6' %}
+                                        value="交易所销户报备"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '7' %}
+                                        value="补报规范资料"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '8' %}
+                                        value="账户休眠"
+                                    {% endifequal %}
+                                   {% ifequal specialorgan_detail.processtype '9' %}
+                                        value="激活休眠账户"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.processtype '10' %}
+                                        value="解除开仓限制"
+                                    {% endifequal %}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">交易所编号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="exchangeid"
+                                    {% ifequal specialorgan_detail.exchangeid 'S' %}
+                                        value="上海期货交易所"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.exchangeid 'N' %}
+                                        value="上海国际能源交易中心"
+                                    {% endifequal %}
+                                   value={{ specialorgan_detail.exchangeid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">期货公司编码</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="companyid" value={{ specialorgan_detail.companyid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">交易类型</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="exclientidtype"
+                                    {% ifequal specialorgan_detail.exclientidtype '1' %}
+                                        value="套保"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.exclientidtype '2' %}
+                                        value="套利"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.exclientidtype '3' %}
+                                        value="投机"
+                                    {% endifequal %}
+                                    {% ifequal specialorgan_detail.exclientidtype '4' %}
+                                        value="做市商"
+                                    {% endifequal %}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">特殊单位名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="clientname" value={{ specialorgan_detail.clientname }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">法人代表姓名</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="legalperson" value={{ specialorgan_detail.legalperson }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">法人代表证件号码</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="legalid" value={{ specialorgan_detail.legalid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">营业执照正本号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="licenseno" value={{ specialorgan_detail.licenseno }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">组织机构代码号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="nocid" value={{ specialorgan_detail.nocid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">银行账号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="accountno" value={{ specialorgan_detail.accountno }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">开户行网点</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="branchname" value={{ specialorgan_detail.branchname }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <button type="button" class="btn btn-primary" onclick="javascript:history.back(-1);">返回</button>
+                            <button type="button" class="btn btn-primary"
+                                    onclick='window.location.href="/base/download_file?processingno={{ specialorgan_detail.processingno }}&clienttype={{ specialorgan_detail.clienttype }}"'>
+                                导出成xml文件</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock%}

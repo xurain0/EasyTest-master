@@ -1,0 +1,70 @@
+{% extends "../../base.html" %}
+
+{% block crumbs %}
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/yqjr/index">主页</a>
+            </li>
+            <li class="active">
+                <a class="this">测试数据管理</a>
+            </li>
+            <li class="active">
+                <a class="this-page">特殊单位</a>
+            </li>
+        </ol>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <a href="/base/specialorgan_add/" class="btn btn-primary">添加特殊单位测试数据</a>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>测试数据名称</th>
+                        <th>业务流水号</th>
+                        <th>交易所</th>
+                        <th>会员号</th>
+                        <th>特殊单位名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sl in specialorgan_list %}
+                    <tr>
+                        <td>{{ sl.processingno }}</td>
+                        <td>{{ sl.testdataname }}</td>
+                        <td>{{ sl.processid }}</td>
+                        <td>{% ifequal sl.exchangeid 'S' %}
+                                上期所
+                            {% else %}
+                                能源所
+                            {% endifequal %}</td>
+                        <td>{{ sl.companyid }}</td>
+                        <td>{{ sl.clientname }}</td>
+                        <td>
+                            <a href="/base/specialorgan_detail?processingno={{ sl.processingno }}" class="layui-btn layui-btn-xs"
+                                        lay-event="edit">详情</a>
+                            <a href="/base/specialorgan_delete?processingno={{ sl.processingno }}" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

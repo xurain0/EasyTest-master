@@ -1,0 +1,208 @@
+{% extends "../../base.html" %}
+
+{% block crumbs %}
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/yqjr/index">主页</a>
+            </li>
+            <li class="active">
+                <a class="this">测试数据管理</a>
+            </li>
+            <li class="active">
+                <a class="this-page" href="/base/person/">个人客户</a>
+            </li>
+            <li class="active">
+                <a class="">详情</a>
+            </li>
+        </ol>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">详情</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="get" action="/base/person_detail/">
+                <input name="processingno" value ={{person_detail.processingno }} hidden>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">测试数据名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="testdataname" value={{ person_detail.testdataname }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">序列号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="seqno" value={{ person_detail.seqno }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">业务流水号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="processid" value={{ person_detail.processid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">流程功能</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="processtype"
+                                    {% ifequal person_detail.processtype '1' %}
+                                        value="申请交易编码"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '2' %}
+                                        value="撤销交易编码"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '3' %}
+                                        value="修改身份信息"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '4' %}
+                                        value="修改一般信息"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '5' %}
+                                        value="交易所开户报备"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '6' %}
+                                        value="交易所销户报备"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '7' %}
+                                        value="补报规范资料"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '8' %}
+                                        value="账户休眠"
+                                    {% endifequal %}
+                                   {% ifequal person_detail.processtype '9' %}
+                                        value="激活休眠账户"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.processtype '10' %}
+                                        value="解除开仓限制"
+                                    {% endifequal %}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">开户客户地域</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="clientregion"
+                                    {% ifequal person_detail.clientregion '1' %}
+                                        value="境内客户"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.clientregion '2' %}
+                                        value="港澳台客户"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.clientregion '3' %}
+                                        value="境外客户"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.clientregion '4' %}
+                                        value="永久居留的境外客户"
+                                    {% endifequal %}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">客户开户模式</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="foreignclientmode"
+                                    {% ifequal person_detail.foreignclientmode '0' %}
+                                        value="境内投资者模式"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.foreignclientmode '1' %}
+                                        value="境内期货公司直接代理境外投资者模式"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.foreignclientmode '2' %}
+                                        value="境外特殊经纪参与者模式"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.foreignclientmode '3' %}
+                                        value="境外中介机构中间介绍模式"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.foreignclientmode '4' %}
+                                        value="境外中介机构委托代理"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.foreignclientmode '5' %}
+                                        value="境外特殊非经纪参与者模式"
+                                    {% endifequal %}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">交易所编号</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="exchangeid"
+                                    {% ifequal person_detail.exchangeid 'S' %}
+                                        value="上海期货交易所"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.exchangeid 'N' %}
+                                        value="上海国际能源交易中心"
+                                    {% endifequal %}
+                                   value={{ person_detail.exchangeid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">期货公司编码</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="companyid" value={{ person_detail.companyid }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">交易类型</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="exclientidtype"
+                                    {% ifequal person_detail.exclientidtype '1' %}
+                                        value="套保"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.exclientidtype '2' %}
+                                        value="套利"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.exclientidtype '3' %}
+                                        value="投机"
+                                    {% endifequal %}
+                                    {% ifequal person_detail.exclientidtype '4' %}
+                                        value="做市商"
+                                    {% endifequal %}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">客户名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="clientname" value={{ person_detail.clientname }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">身份证号码</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="idoriginal" value={{ person_detail.idoriginal }}
+                                    class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <button type="button" class="btn btn-primary" onclick="javascript:history.back(-1);">返回</button>
+                            <button type="button" class="btn btn-primary"
+                                    onclick=onclick='window.location.href="/base/download_file?processingno={{ specialorgan_detail.processingno }}&clienttype={{ specialorgan_detail.clienttype }}"'>
+                                导出成xml文件</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock%}
