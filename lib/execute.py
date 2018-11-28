@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # coding:utf-8
-__author__ = 'wsy'
+__author__ = 'xu.rain'
 
 
 from base.models import Project, Sign, Environment, Interface, Case

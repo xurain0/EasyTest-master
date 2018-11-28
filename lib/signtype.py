@@ -2,10 +2,9 @@
 # encoding: utf-8
 """
 @version: python 3.6.3
-@author: wsy
+@author: xu.rain
 @software: PyCharm
-@file: signtype.py
-@time: 2018/1/30 10:36
+@time: 2018/11/30 10:36
 """
 import hashlib
 
